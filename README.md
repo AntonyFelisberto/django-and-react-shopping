@@ -1,0 +1,2 @@
+# django-and-react-shopping
+ 
