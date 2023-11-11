@@ -13,10 +13,12 @@ PYTHON
     python -m venv venv
     cd backend\venv\Scripts
     activate
-    pip install django
-    django-admin startproject backend
 
-    python manage.py startcore api_communication
+    pip install django
+    pip install djangorestframework
+
+    django-admin startproject backend
+    python manage.py startapp base
     python manage.py runserver
 
     python manage.py collectstatic
