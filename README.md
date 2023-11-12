@@ -21,8 +21,10 @@ PYTHON
 
     django-admin startproject backend
 
-    python manage.py startapp base
-    python manage.py migrate
-    python manage.py runserver
-    python manage.py createsuperuser
-    python manage.py collectstatic
+    python manage.py startapp base      create aplication
+    python manage.py makemigrations     apply migrations
+    python manage.py migrate            need to run when maked alterations in database
+    python manage.py runserver          run server
+    python manage.py createsuperuser    create super user
+    python manage.py flush              resset database
+    python manage.py collectstatic      create static files folder
