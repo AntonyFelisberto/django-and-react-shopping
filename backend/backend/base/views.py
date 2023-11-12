@@ -20,7 +20,17 @@ def get_routes(request):
         "/api/products/delete/<id>/",
         "/api/products/<update>/<id>/",
     ]
-    return JsonResponse(routes,safe=False)
+    return Response(routes)
 
+@api_view(["GET"])
 def get_products(request):
-    return JsonResponse(products,safe=False)
+    return Response(products)
+
+@api_view(["GET"])
+def get_product(request,pk):
+    product = None
+    for i in products:
+        if i["_id"] == pk:
+            product = i
+            break
+    return Response(product)
