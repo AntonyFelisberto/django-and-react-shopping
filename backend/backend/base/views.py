@@ -4,24 +4,19 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Product
 from .products import products
-from .Serializers import ProductSerializer
+from .Serializers import ProductSerializer, UserSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self,attrs):
-        token = super().validate(self.user)
+        data = super().validate(self.user)
 
-        refresh = self.get_token(self.user)
+        data['username'] = self.user.username
+        data['email'] = self.user.email
 
-        token['refresh'] = str(refresh)
-        token['acess'] = str(refresh.access_token)
-
-        if api_settings.UPDATE_LAST_LOGIN:
-            updata_last_login(None, self.user)
-
-        return token
+        return data
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
@@ -43,6 +38,12 @@ def get_routes(request):
         "/api/products/<update>/<id>/",
     ]
     return Response(routes)
+
+@api_view(["GET"])
+def get_user_profile(request):
+    user = request.user
+    serializer = UserSerializer(products,many=False)
+    return Response(serializer.data)
 
 @api_view(["GET"])
 def get_products(request):
