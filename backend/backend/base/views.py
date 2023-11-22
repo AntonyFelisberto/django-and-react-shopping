@@ -10,12 +10,16 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
+    def validate(self,attrs):
+        token = super().validate(self.user)
 
-        token['username'] = user.name
-        token['message'] = "information"
+        refresh = self.get_token(self.user)
+
+        token['refresh'] = str(refresh)
+        token['acess'] = str(refresh.access_token)
+
+        if api_settings.UPDATE_LAST_LOGIN:
+            updata_last_login(None, self.user)
 
         return token
 
