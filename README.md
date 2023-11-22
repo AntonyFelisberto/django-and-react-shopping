@@ -18,7 +18,8 @@ PYTHON
     pip install djangorestframework
     pip install pillow
     pip install django-cors-headers
-
+    pip install djangorestframework-simplejwt
+    
     django-admin startproject backend
 
     python manage.py startapp base          create aplication
