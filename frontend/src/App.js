@@ -1,10 +1,11 @@
-import { Container } from 'react-bootstrap'
-import {HashRouter as Router,Routes,Route} from 'react-router-dom'
 import Header from "./components/Header"
 import Footer from "./components/Footer"
+import { Container } from 'react-bootstrap'
 import CartScreen from "./screens/CartScreen"
+import LoginScreen from "./screens/LoginScreen"
 import HomeScreen from "./screens/HomeScreens"
 import ProductScreen from "./screens/ProductScreen"
+import {HashRouter as Router,Routes,Route} from 'react-router-dom'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Container>
           <Routes>
             <Route path='/' element={<HomeScreen />} exact/>
+            <Route path='/login' element={<LoginScreen />} />
             <Route path='/product/:id' element={<ProductScreen />} />
             <Route path='/cart/:id?' element={<CartScreen />} />
           </Routes>
