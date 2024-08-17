@@ -28,5 +28,7 @@ PYTHON
     python manage.py migrate                need to run when maked alterations in database
     python manage.py runserver              run server
     python manage.py createsuperuser        create super user
+        antony
+        admins
     python manage.py flush                  resset database
     python manage.py collectstatic          create static files folder
