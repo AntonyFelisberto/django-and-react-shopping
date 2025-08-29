@@ -25,10 +25,11 @@ PYTHON
     python manage.py startapp base          create aplication
     python manage.py makemigrations         apply migrations
     python manage.py makemigrations base    force makemigrations in the project
-    python manage.py migrate                need to run when maked alterations in database
+    python manage.py migrate                need to run when changed database
     python manage.py runserver              run server
     python manage.py createsuperuser        create super user
-        antony
-        admins
+        user
+        yourMail@gmail.com
+        yourPassword@190
     python manage.py flush                  resset database
     python manage.py collectstatic          create static files folder
